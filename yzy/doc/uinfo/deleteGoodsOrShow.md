@@ -10,7 +10,9 @@ This document describe how to delete a good info or show picture.
 ```
 {
 	"goodsid": <id>,
-	"method": <remove/img>
+	"method": <remove/img>,
+	# if u want to delete this picture
+	"type": <remove>
 }
 ```
 ### 5. Response Data:
