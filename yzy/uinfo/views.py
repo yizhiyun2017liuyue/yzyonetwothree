@@ -490,6 +490,6 @@ def deleteGoodsOrShow(request):
         except Exception:
             return JsonResponse({"status": "failed", "reason": "id_wrong"})
         if a.goodsImg:
-            return JsonResponse({"status": "success", "path": good.goodsImg.name.split('/')[1]})
+            return JsonResponse({"status": "success", "path": a.goodsImg.name.split('/')[1]})
         else:
             return JsonResponse({"status": "failed", "reason": "NO_PICTURE"})
