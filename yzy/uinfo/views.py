@@ -299,6 +299,8 @@ def updateServerImg(request):
                 idNum = int(os.path.split(file.name)[1].split('_')[0])
                 # print(idNum)
                 a = Goods.objects.get(id=idNum)
+                if a.goodsImg:
+                    a.goodsImg.delete()
                 a.goodsImg = file
                 a.save()
             except Exception as f:
@@ -491,8 +493,8 @@ def deleteGoodsOrShow(request):
             return JsonResponse({"status": "failed", "reason": "id_wrong"})
         if a.goodsImg:
             if 'type' in jsonData.keys() and jsonData['type'] == 'remove':
-                    a.goodsImg.delete()
-                    return JsonResponse({"status": "success"})
+                a.goodsImg.delete()
+                return JsonResponse({"status": "success"})
             return JsonResponse({"status": "success", "path": a.goodsImg.name.split('/')[1]})
         else:
             return JsonResponse({"status": "failed", "reason": "NO_PICTURE"})
