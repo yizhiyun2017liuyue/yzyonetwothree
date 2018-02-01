@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>物品管理</title>
+  <link rel="stylesheet" href="/static/css/reset.css">
+  <link rel="stylesheet" href="/static/css/login.css">
+  <script src="/static/js/jquery.min.js" charset="utf-8"></script>
+  <script src="/static/js/login.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body scroll="no">
+  <div class="loginContent">
+      <!-- 标题 -->
+      <h3>资产管理系统</h3>
+  <!-- 表单元素 -->
+  <div class='loginFormWrap'>
+    <!-- 正常显示登录 -->
+    <div class="normalShow">
+         <form id="loginForm" enctype="multipart/form-data">
+            <label form="username"><input type="text" name="username" placeholder="用户名" id="username"></label>
+            <label form="password"><input type="password" name="userpwd" placeholder="密码" id="userpwd"></label>
+         </form>
+         <!-- 修改密码 -->
+         <div class="changePassword"><p>修改密码</p></div>
+
+         <!-- 登录按钮 -->
+         <div class='loginBtn'><p>登录</p></div>
+
+        <!-- 提示 -->
+        <div class='loginWaring'></div>
+    </div>
+
+    <!-- 修改密码 -->
+    <div class='changeNameWrap'>
+      <label><span class='loginNewName'>新密码</span><input type="password" name='changepw' placeholder="6-20位字符,区分大小写" id="changeNameNew"></label>
+      <label><span>确认密码</span><input type="password" name='changepw' placeholder="再次输入密码,确认无误" id='changeNameHandle'></label>
+      <!-- 按钮 -->
+      <div class='changeNameClose'>取消</div>
+      <div class='changeNameBtn'>确认修改</div>
+      <!-- 提示 -->
+      <div class='changeNameWaring clear'></div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

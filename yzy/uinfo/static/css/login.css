@@ -1,0 +1,48 @@
+body,html{width: 100%;height: 100%}
+body{background: url(/static/img/bg.png) no-repeat center;}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #b4b4b4; opacity:1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #b4b4b4;opacity:1;
+}
+
+input:-ms-input-placeholder{
+    color: #b4b4b4;opacity:1;
+}
+
+input::-webkit-input-placeholder{
+    color: #b4b4b4;opacity:1;
+}
+
+
+.loginContent{width: 400px;height:460px;position: absolute;top:0;right: 0;bottom: 0;left:0;margin:auto;}
+.loginContent h3{font-size: 48px;text-align: center;color: white;margin-bottom:50px}
+
+.loginContent .loginFormWrap{width:100%;height: 320px;background: white;box-shadow: 0px 3px 5px 0px rgba(0,49,98,0.08);border-radius: 3px;}
+.loginContent .loginFormWrap .normalShow{width: 250px;margin: 0 auto;}
+.loginContent .loginFormWrap .normalShow label{display:block;width: 227px;background: url(/static/img/user_icon.png) no-repeat 2px 95px;height:25px;line-height:24px;border-bottom: 1px solid #DEDEDE;padding-left: 23px;margin: 0 auto;}
+.loginContent .loginFormWrap .normalShow label input{text-indent: 3px;height:99%;width: 227px;}
+.loginContent .loginFormWrap .normalShow label:nth-child(1),.loginContent .loginFormWrap .changeNameWrap label:nth-child(1){padding-top: 90px;}
+.loginContent .loginFormWrap .normalShow label:nth-child(2){background: url(/static/img/password_icon.png) no-repeat 2px;margin-top: 15px;}
+.loginContent .loginFormWrap .normalShow .changePassword{width:250px;text-align: right;font-size:12px;color:#b4b4b4;padding-top: 10px;height: 18px}
+.loginContent .loginFormWrap .normalShow .changePassword p{float: right;cursor: pointer;color: #2e8fff;}
+/*.loginContent .loginFormWrap .normalShow .changePassword p:hover{color: #acccff}*/
+.loginContent .loginFormWrap .normalShow .loginBtn{width: 250px;height: 35px;background:#2e8fff;text-align: center;line-height: 37px;font-size:14px;color: white;margin-top: 42px;cursor: pointer;border-radius: 3px;}
+.loginContent .loginFormWrap .normalShow .loginWaring,.loginContent .loginFormWrap .changeNameWrap .changeNameWaring{width: 250px;font-size: 12px;color: red;text-align: center;padding-top: 10px;display: none}
+
+/*修改密码界面*/
+.loginContent .loginFormWrap .changeNameWrap{display: none;width: 250px;margin: 0 auto;}
+.loginContent .loginFormWrap .changeNameWrap label{display:block;width: 250px;height: 25px;line-height: 29px;border-bottom: 1px solid #DEDEDE;font-size: 12px;}
+.loginContent .loginFormWrap .changeNameWrap label .loginNewName{letter-spacing: 4px;}
+.loginContent .loginFormWrap .changeNameWrap label:nth-child(2){margin-top: 15px;}
+.loginContent .loginFormWrap .changeNameWrap label input{height:99%;text-indent:3px;width:195px;margin-left: 5px}
+.loginContent .loginFormWrap .changeNameWrap .changeNameClose,.loginContent .loginFormWrap .changeNameWrap .changeNameBtn{width: 110px;height: 37px;line-height: 37px;text-align: center;box-sizing: border-box;border: 1px solid #2e8fff;border-radius: 3px;margin-top: 64px;font-size: 14px;cursor: pointer;}
+.loginContent .loginFormWrap .changeNameWrap .changeNameClose{color: #000;background: white;float: left;}
+.loginContent .loginFormWrap .changeNameWrap .changeNameBtn{color: white;background: #2e8fff;float: right;}

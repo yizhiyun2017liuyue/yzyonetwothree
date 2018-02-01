@@ -1,0 +1,118 @@
+***表一*** <财产记录>
+
+编号(唯一标识符)：     id int
+已录入数量: recordednum int
+凭证号：    certificate int
+资产编号：  assetnum varchar         
+科目编码：   subjectcode varchar
+资产名称：   assetname  varchar
+登记日期：   recorddate  date
+规格型号：    models  varchar
+摘要：       abstracts  varchar
+原始单价：    primprice  float
+原始数量：    primnum  float
+原始金额：    primamount  float
+获取方式：    access  varchar
+管理部门：    mdepartment  varchar
+财务部门：    fdepartment  varchar
+使用部门：    udepartment  varchar
+使用状况：    ustatus  varchar
+保管人：      saveman  varchar
+通知单号：    orderno  int
+使用年限：     usefixedyear  int
+现有数量：     nownum  float
+现有价值：     nowprice  float
+经费科目：     fored  varchar
+会计凭证号：    accountingnum  varchar
+入账标志：      bookedicon  str
+作废标志：      nullifyicon  str
+登记人：        recordman  varchar
+原管理部门：     sourcemd  varchar
+所在位置：       area  varchar
+物品编码：       itemcode  varchar
+
+### 当新建上三个用户 添加三个字段
+###用户一录入数量： username int
+###用户二录入数量： username int
+###用户三录入数量： username int
+
+create table assets(
+id int primary key AUTO_INCREMENT,
+recordednum int DEFAULT 0,
+certificate int,
+assetnum varchar(50) character set utf8mb4, 
+subjectcode varchar(50) character set utf8mb4,
+assetname varchar(50) character set utf8mb4,
+recorddate datetime,
+models varchar(50) character set utf8mb4,
+abstracts varchar(50) character set utf8mb4,
+primprice float,
+primnum float,
+primamount float,
+access varchar(50) character set utf8mb4,
+mdepartment varchar(50) character set utf8mb4,
+fdepartment varchar(50) character set utf8mb4,
+udepartment varchar(50) character set utf8mb4,
+ustatus varchar(50) character set utf8mb4,
+saveman varchar(50) character set utf8mb4,
+orderno int,
+usefixedyear int,
+nownum float,
+nowprice float,
+fored varchar(50) character set utf8mb4,
+accountingnum varchar(50) character set utf8mb4,
+bookedicon varchar(50) character set utf8mb4,
+nullifyicon varchar(50) character set utf8mb4,
+recordman varchar(50) character set utf8mb4,
+sourcemd varchar(50) character set utf8mb4,
+area varchar(50) character set utf8mb4,
+itemcode varchar(50) character set utf8mb4
+);
+
+
+
+
+
+
+
+
+
+***表二*** <物品详情>
+
+物品唯一标识符:        id
+商品图片:             goodsImg
+椅子图片最上边中间文字： goodsName
+管理部门:             manageDepartment
+使用部门:             useDepartment
+管理人:               manager
+使用人:               user
+记录人:               recorder
+记录日期:             recordDate
+尺寸:                size
+颜色:                color
+型号:                modelNum
+财务记录:             financeRecord
+
+
+
+
+
+
+
+
+***表三*** <位置记录>
+
+位置信息:    areastr
+记录时间:    areadate
+物品id:     goodsid
+
+
+
+
+
+
+
+***表四*** <设置三个默认的用户>
+
+用户名: username
+密码: password

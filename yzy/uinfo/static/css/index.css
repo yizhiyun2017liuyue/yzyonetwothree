@@ -1,0 +1,44 @@
+html,body{width: 100%;height: 100%;-webkit-user-select: none; /* Chrome/Safari/Opera */-moz-user-select: none; /* Firefox */-ms-user-select: none; /* Internet Explorer/Edge */}
+body .markLine{width: 100%;height: 100%;background: rgba(0,0,0,0.2);position: absolute;display: none;z-index: 9999}
+#panel .topFlagModule{height: 50px;background:white;box-sizing: border-box;padding: 0px 20px;color: #202020;}
+#panel .topFlagModule h3{font-size: 16px;float: left;height: 50px;line-height: 54px;margin: 0}
+#panel .topFlagModule .closePage{float: right;font-size: 12px;cursor: pointer;line-height: 54px;}
+#panel .topFlagModule .userShow{float: right;font-size: 12px;margin-right: 20px;line-height: 50px;}
+#panel .topFlagModule .userShow img{vertical-align: middle;}
+#panel .topFlagModule .userShow p{float: right;margin:2px 0px 0px 10px;}
+#panel .mainContent{max-width: 100%;min-height: 500px;overflow-y: auto;background:url("/static/img/indexbg.png") no-repeat center;background-size:100% 100%;}
+#panel .mainContent .leftNavModule{width:120px;background:#214d80;float: left;height: 100%;}
+#panel .mainContent .leftNavModule .handleList{margin: 0px;height: 100%}
+#panel .mainContent .leftNavModule .handleList li{cursor: pointer;height:100px;text-align: center;color: white;font-size: 12px;}
+#panel .mainContent .leftNavModule .handleList li img{margin:30px 0px 5px 0px;}
+#panel .mainContent .leftNavModule .handleList li.active{background:#1a3e66;}
+#panel .mainContent .rightHandleModule{height: 100px;margin-left:120px;height: 100%;box-sizing: border-box;padding: 0px 20px ;overflow: auto}
+#panel .mainContent .rightHandleModule .rightHandleTitle{width: 100%;height: 50px;border-bottom: 1px solid #DEDEDE;font-size: 12px;}
+#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleData{float: left;color:#2e8fff;margin-top: 17px;font-weight: bolder;}
+#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleBtn{float: right;color: white;background:#2e8fff;padding: 2px 20px;margin-top: 14px;cursor: pointer;border-radius: 2px;height: 20px;line-height: 22px}
+#panel .mainContent .rightHandleModule .enterNewQR{width: 850px;}
+#panel .mainContent .rightHandleModule .enterNewQR label,#panel .mainContent .rightHandleModule .createNewUserHandle label,#panel .mainContent .rightHandleModule .addfinancialHandle label{width: 350px;float: left;font-size: 12px;margin:30px 50px 0px 0px;}
+#panel .mainContent .rightHandleModule .enterNewQR label input,#panel .mainContent .rightHandleModule .createNewUserHandle label input,#panel .mainContent .rightHandleModule .addfinancialHandle label input{width: 250px;border: 1px solid #DEDEED;background: white;height: 25px;margin-left: 5px;margin-bottom: 0px;height: 20px;line-height: 20px}
+#panel .mainContent .rightHandleModule .enterNewQR .enterNewQRWaring{width:720px;text-align:center;float:left;font-size: 12px;color: red;margin-top:30px;display: none}
+#panel .mainContent .rightHandleModule .addfinancialHandle label span{display: inline-block;width:80px;text-align: right;margin-right: 5px;}
+#panel .mainContent .rightHandleModule .addfinancialHandle label{width: 355px;}
+
+/*已录入信息*/
+#panel .mainContent .rightHandleModule .didRecordGoodList,#panel .mainContent .rightHandleModule .financialTableShow,#panel .mainContent .rightHandleModule .addfinancialHandle{width: 100%;position: relative;display: none;height: 100%;}
+#panel .mainContent .rightHandleModule  .dataTables_wrapper{margin-top: 20px;}
+#panel .mainContent .rightHandleModule  .financialTableShow .dataTables_scroll{width: 3200px !important;overflow-x:auto;height: 100%;}
+#panel .mainContent .rightHandleModule  table td{text-align: center;font-size: 12px;}
+#panel .mainContent .rightHandleModule  select,#panel .mainContent .rightHandleModule  input{margin-bottom: 5px;}
+#panel .mainContent .rightHandleModule  .dataTables_paginate,#panel .mainContent .rightHandleModule  .dataTables_info{padding:10px}
+#panel .mainContent .rightHandleModule  .dataTables_paginate{position: fixed;right: 0}
+.dataTables_wrapper{position: absolute !important;width: 100%;}
+#panel .mainContent .rightHandleModule .financialTableShow{width: 3200px;}
+#panel .mainContent .rightHandleModule .financialTableShow #financialTableShowTable_filter{position: fixed;right: 20px;}
+/*#panel .mainContent .rightHandleModule .financialTableShow #financialTableShowTable_length{position: fixed;left: 20px;margin-bottom: 100px}*/
+/*创建新用户*/
+#panel .mainContent .rightHandleModule .createNewUserHandle{width: 330px;display: none}
+#panel .mainContent .rightHandleModule .createNewUserHandle .createNewUserWaring{float:left;width:315px;text-align:center;font-size: 12px;color: red;margin-top:30px;display: none}
+
+/*财务信息表*/
+#panel .mainContent .rightHandleModule .addfinancialHandle{width: 1000px;}
+#panel .mainContent .rightHandleModule .addfinancialHandle .addfinancialHandleWaring{float:left;width: 720px;text-align:center;color: red;margin-top: 30px;font-size: 12px;}
