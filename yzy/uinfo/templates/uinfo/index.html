@@ -7,8 +7,10 @@
 		<link rel="stylesheet" type="text/css" href={% static "css/reset.css" %}>
 
 		<link rel="stylesheet" type="text/css" href={% static "css/datatables.min.css" %}/>
+		<link rel="stylesheet" type="text/css" href={% static "css/animate.css" %}/>
 		<link rel="stylesheet" type="text/css" href={% static "css/bootstrap.min.css" %}/>
-				<link rel="stylesheet" type="text/css" href={% static "css/index.css" %}/>
+		<link rel="stylesheet" type="text/css" href={% static "css/datatables.select.min.css" %}/>
+		<link rel="stylesheet" type="text/css" href={% static "css/index.css" %}/>
 		<script src={% static "js/jquery.min.js" %} type="text/javascript" charset="utf-8"></script>
 		<script src={% static "js/httpSafe.js" %} type="text/javascript" charset="utf-8"></script>
 		<script src={% static "js/datatables.min.js"  %} type="text/javascript" charset="utf-8"></script>
@@ -17,7 +19,11 @@
 	</head>
 	<body scroll="no">
 		<!-- 遮罩 -->
-		<div class="markLine"></div>
+		<div class="markLine">
+				<div class="didMoneyHandleBtn clearSearch"><p>清除搜索</p></div>
+				<div class="didMoneyHandleBtn didMoneycloseHandle"><p>取消</p></div>
+				<div class="didMoneyHandleBtn didMoneyOkBtn"><p>确定</p></div>
+		</div>
 		<div id="panel">
 		<!-- header -->
 			<div class="topFlagModule">
@@ -59,7 +65,8 @@
 				<!-- rightTitle -->
 				<div class='rightHandleTitle'>
 					<p class='rightHandleTitleData'>二维码信息</p>
-					<p class="rightHandleTitleBtn">生产并打印</p>
+					<p class="rightHandleTitleBtn didCommonBtn">生产并打印</p>
+					<p class="didTableSaveData didCommonBtn">保存</p>
 				</div>
 					<div class="enterNewQR">
 						<label>使用部门 : <input type="text" class="userPartment"/></label>
@@ -71,10 +78,7 @@
 						<div class="enterNewQRWaring">输入内容不能为空</div>
 					</div>
 					 <div class="didRecordGoodList">
-							<!-- 图片展示 -->
-							<div class="didRecordGoodList-img-show">
-								<img src="" alt="handleImg">
-							</div>
+							
 					 </div>
 					 <div class="createNewUserHandle">
 						<label>新用户名 : <input type="text" class="createNewUserNewName"/></label>
@@ -94,6 +98,43 @@
 					 <div class='financialTableShow'>
 					 	
 					 </div>
+					<form enctype="multipart/form-data">
+							{% csrf_token %}
+			 				<input type="file" name="changeImg" style="display: none" id="changeImageInput" accept="image/jpeg,image/jpg,image/png">
+					</form>
+			 		<!-- 图片展示 -->
+					<div class="didRecordGoodList-img-show">
+						<img src="" alt="handleImg">
+						<!-- 删除 -->
+						<div class="deleteImage imageHandleCommon">
+							<p>删除</p>
+						</div>
+					
+						<!-- 编辑 -->
+						<div class="changeImageSrc imageHandleCommon">
+							<p>编辑</p>
+						</div>
+						<!-- 添加图片确定取消 -->
+						<!-- 确定 -->
+						<div class="btnTrueFile fileShow">
+							<p>确定</p>
+						</div>
+
+						<!-- 取消 -->
+						<div class="closeImageFile fileShow">
+							<p>取消</p>
+						</div>
+
+					</div>
+
+
+
+					<!-- 已经录入信息表点击财务信息查看 -->
+					<div class="didMoneyHandleShow-wrap">
+						<div class="didMoneyHandleShow">
+						
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -9,8 +9,7 @@ This document describe how to get new 200 qrcode.
 ### 4. Request Data:
 ```
 {     
-	"username": <username>,
-	"goodsList": [
+	"goodsData": [
 		{
       		"id": <id>,
                   "goodsName": <goodsName>,
@@ -28,7 +27,7 @@ This document describe how to get new 200 qrcode.
 		},
 		...
 	],
-      "areaList": [
+      "areaData": [
             {
                   "areastr": <areastr>,
                   "areadate": <areadate>,

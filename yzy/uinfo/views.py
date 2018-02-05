@@ -235,7 +235,10 @@ def updateServerInfo(request):
     '''
     update server info
     '''
-    jsonData = json.loads((request.POST)["json"])
+    if 'HTTP_X_FROM' in request.META.keys():
+        jsonData = json.loads((request.body).decode('utf8'))
+    else:
+        jsonData = json.loads((request.POST)["json"])
     # print("data: {0}, type: {1}".format(jsonData, type(jsonData)))
     if request.method == 'POST':
 
@@ -257,7 +260,7 @@ def updateServerInfo(request):
             if type(new['recordDate']) == int:
                 good.recordDate = new['recordDate']
             good.size = new['size']
-            if good.goodsImg:
+            if good.goodsImg and 'HTTP_X_FROM' not in request.META.keys():
                 good.goodsImg.delete()
             good.color = new['color']
             good.modelNum = new['modelNum']
