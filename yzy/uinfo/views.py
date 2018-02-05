@@ -265,15 +265,16 @@ def updateServerInfo(request):
             good.color = new['color']
             good.modelNum = new['modelNum']
             financeRecord = new['financeRecord']
-            if type(financeRecord) == int and financeRecord != 0:
+            if financeRecord != 0:
                 good.financeRecord = financeRecord
                 rList = recordNum.objects.filter(goodsId=new['id'])
                 for i in rList:
                     i.delete()
-                r = recordNum()
-                r.goodsId = new['id']
-                r.recordId = financeRecord
-                r.save()
+                if financeRecord:
+                    r = recordNum()
+                    r.goodsId = new['id']
+                    r.recordId = financeRecord
+                    r.save()
             good.save()
 
         areaList = jsonData['areaData']
