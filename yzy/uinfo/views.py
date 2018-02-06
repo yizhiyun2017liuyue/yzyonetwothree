@@ -480,6 +480,8 @@ def deleteGoodsOrShow(request):
     if method == "remove":
         try:
             a = Goods.objects.get(id=goodsId)
+            if a.goodsImg:
+                a.goodsImg.delete()
             a.delete()
         except Exception:
             pass

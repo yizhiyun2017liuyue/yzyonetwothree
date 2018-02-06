@@ -1,7 +1,7 @@
 	$(function(){
 
 		$("#panel .mainContent").css("height",($("body").outerHeight() || $(document).outerHeight()) - 54 + "px");
-		$("#panel .mainContent .rightHandleModule .didRecordGoodList,#panel .mainContent .rightHandleModule .financialTableShow,#panel .mainContent .rightHandleModule .addfinancialHandle").height($("#panel .mainContent").height() - 91);
+		$("#panel .mainContent .rightHandleModule .didRecordGoodList,#panel .mainContent .rightHandleModule .financialTableShow,#panel .mainContent .rightHandleModule .addfinancialHandle-content-wrap").height($("#panel .mainContent").height() - 91);
 		$("#panel .mainContent .rightHandleModule .rightHandleTitle").width($("#panel .mainContent .rightHandleModule").width());
 		//退出系统点击事件
 		$("#panel .topFlagModule .closePage").unbind("click");
@@ -60,6 +60,7 @@
 
         var tempDataArr = [{data:"selectyzy"},{"data":"id","title":"编号"},{"data":"assetnum","title":"资产编号"},{"data":"assetname","title":"资产名称"},{"data":"recorddate","title":"登记日期"},{"data":"primnum","title":"原始数量"},{"data":"primamount","title":"原始金额"},{"data":"mdepartment","title":"管理部门"},{"data":"udepartment","title":"使用部门"},{"data":"saveman","title":"保管人"},{"data":"recordednum","title":"已录入量"}];
       	
+      	var financialClickChange = false;
         //开启加载进度条、
         function openLoadingHandle(){
         	var target = $("body").get(0);
@@ -246,6 +247,7 @@
 		         $("#panel .mainContent .didRecordGoodList-img-show .changeImageSrc").click(function(event){
 		         	event.stopPropagation();
 		         	document.getElementById("changeImageInput").click();
+		         	$("#changeImageInput").unbind("change");
 		         	$("#changeImageInput").change(function(event){
 		         		event.stopPropagation();
 		         		openLoadingHandle();
@@ -279,7 +281,7 @@
 		          		$(".markLine").show();
 		          		$("#panel .mainContent  .didRecordGoodList-img-show .imageHandleCommon").show();
 			     		$("#panel .mainContent  .didRecordGoodList-img-show .fileShow").hide();
-			     		if(thisImgText == "empty"){
+			     		if(thisImgText.split("_")[1] == "empty"){
 			     			$(".deleteImage ").hide();
 			     			imageOnload("empty");
 			     		}else{
@@ -465,14 +467,15 @@
 				switch($(this).attr("class"))
 					{
 						case "createNewInfo active":
-							$("#panel .mainContent .rightHandleModule .addfinancialHandle").add($("#panel .mainContent .rightHandleModule .createNewUserHandle")).add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
+							$("#panel .mainContent .rightHandleModule .enterNewQR label input").val("");
+							$("#panel .mainContent .rightHandleModule .addfinancialHandle-content-wrap").add($("#panel .mainContent .rightHandleModule .createNewUserHandle")).add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleData").text("二维码信息");
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleBtn").text("生产并打印").show();
 							$('#panel .mainContent .rightHandleModule .enterNewQR .enterNewQRWaring').add($("#panel .mainContent .rightHandleModule .createNewUserHandle .createNewUserWaring")).add($("#panel .mainContent .rightHandleModule .addfinancialHandle .addfinancialHandleWaring")).hide();
 							$("#panel .mainContent .rightHandleModule .enterNewQR").show();
 						break;
 						case "lookRecordInfo active":
-							$("#panel .mainContent .rightHandleModule .addfinancialHandle").add($("#panel .mainContent .rightHandleModule .createNewUserHandle")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
+							$("#panel .mainContent .rightHandleModule .addfinancialHandle-content-wrap").add($("#panel .mainContent .rightHandleModule .createNewUserHandle")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
 							$('#panel .mainContent .rightHandleModule .enterNewQR .enterNewQRWaring').add($("#panel .mainContent .rightHandleModule .createNewUserHandle .createNewUserWaring")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleData").text("录入信息");
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleBtn").text("删除选中行").show();
@@ -480,21 +483,22 @@
 							overWriteData(saveColumns,"goodsData","didRecordGoodList");
 						break;
 						case "createNewUser active":
-							$("#panel .mainContent .rightHandleModule .addfinancialHandle").add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
+							$("#panel .mainContent .rightHandleModule .addfinancialHandle-content-wrap").add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleData").text("用户信息");
 							$('#panel .mainContent .rightHandleModule .enterNewQR .enterNewQRWaring').add($("#panel .mainContent .rightHandleModule .createNewUserHandle .createNewUserWaring")).add($("#panel .mainContent .rightHandleModule .addfinancialHandle .addfinancialHandleWaring")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleBtn").text("确定").show();
 							$("#panel .mainContent .rightHandleModule .createNewUserHandle").show();
 						break;
 						case "addfinancial active":
+							$("#panel .mainContent .rightHandleModule .addfinancialHandle label input").val("");
 							$("#panel .mainContent .rightHandleModule .createNewUserHandle").add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .financialTableShow")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleData").text("新增财务信息");
 							$('#panel .mainContent .rightHandleModule .enterNewQR .enterNewQRWaring').add($("#panel .mainContent .rightHandleModule .createNewUserHandle .createNewUserWaring")).add($("#panel .mainContent .rightHandleModule .addfinancialHandle .addfinancialHandleWaring")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleBtn").text("确定").show();
-							$("#panel .mainContent .rightHandleModule .addfinancialHandle").show();
+							$("#panel .mainContent .rightHandleModule .addfinancialHandle-content-wrap").show();
 						break;
 						case "financialTable active":
-							$("#panel .mainContent .rightHandleModule .createNewUserHandle").add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .addfinancialHandle")).hide();
+							$("#panel .mainContent .rightHandleModule .createNewUserHandle").add($("#panel .mainContent .rightHandleModule .didRecordGoodList")).add($("#panel .mainContent .rightHandleModule .enterNewQR")).add($("#panel .mainContent .rightHandleModule .addfinancialHandle-content-wrap")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleData").text("所有财务记录");
 							$('#panel .mainContent .rightHandleModule .enterNewQR .enterNewQRWaring').add($("#panel .mainContent .rightHandleModule .createNewUserHandle .createNewUserWaring")).add($("#panel .mainContent .rightHandleModule .addfinancialHandle .addfinancialHandleWaring")).hide();
 							$("#panel .mainContent .rightHandleModule .rightHandleTitle .rightHandleTitleBtn").text("删除选中行").show();
@@ -528,8 +532,9 @@
 
 
 	var didMoneyBool = true;
+	var didMoneyThis;
 	//点击显示财务表内交互事件
-	function didMoneyBtnFunction(element){
+	function didMoneyBtnFunction(){
 		$(".markLine .didMoneyHandleBtn").each(function(index,ele){
 			$(ele).click(function(event){
 				event.stopPropagation();
@@ -537,7 +542,7 @@
 				//清除搜索
 				if($(ele).hasClass("clearSearch")){
 					if($("#panel .mainContent .rightHandleModule .didMoneyHandleShow .dataTables_filter").find("input").val() == "") return;
-		
+			
 					 table.search("").draw();
 				}else if($(ele).hasClass("didMoneycloseHandle")){
 					//取消
@@ -547,12 +552,16 @@
 	        			$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").hide().removeClass("zoomOut").css("zIndex","2");
 	        			
 	        		})
+	        		$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table.dataTable tbody tr.selected").children("td").eq(0).trigger("click");
+	        		$(".markLine .didMoneyHandleBtn").hide();
 				}else if($(ele).hasClass("didMoneyOkBtn")){
 					
 					$("#panel .mainContent .rightHandleModule .rightHandleTitle .didTableSaveData").show();
 					var tableFun = $("#didRecordGoodListTable").DataTable();
+
+
 					var thisTr  = $(".didMoneyHandleShow table.dataTable tbody>tr.selected");
-					var thisRowDataMoney = tableFun.data()[tableFun.row(element.parent("tr"))[0][0]];
+					var thisRowDataMoney = tableFun.data()[tableFun.row(didMoneyThis.parent("tr"))[0][0]];
 					//确定
 					if($.inArray(thisRowDataMoney["id"],changeDataSaveId) == -1){
 							changeDataSaveId.push(thisRowDataMoney["id"]);
@@ -578,9 +587,9 @@
 					}
 
 					if(thisTr.length == 0){
-						$(element).text("");
+						$(didMoneyThis).text("");
 					}else{
-						$(element).text(Number(table.data()[tableFun.row(thisTr)[0][0]]["id"]));	
+						$(didMoneyThis).text(Number(table.data()[tableFun.row(thisTr)[0][0]]["id"]));	
 					}
 					
 					$(".markLine .didMoneycloseHandle").trigger("click");
@@ -592,6 +601,26 @@
 		didMoneyBool = false;
 	}
 
+
+
+
+	function changeDidFinacialTable(element,tempHandleThisApi){
+        	$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").css("zIndex","201");
+			$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table.dataTable tbody tr").removeClass("selected");
+			if($(element).text() != ""){
+					tempHandleThisApi.page(parseInt((Number($(element).text())-1)/10)).draw(false);
+					$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table.dataTable tbody tr").eq((Number($(element).text())-1) % 10).children("td").eq(0).trigger("click");
+			}
+			$(".markLine .didMoneyHandleBtn").show();
+			didMoneyThis = element;
+
+			financialClickChange = false;
+	}
+
+
+
+
+
 	//创建财务记录表
 	function createTableFinance(element){
 		$(".markLine").show();
@@ -599,65 +628,73 @@
 		$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(){
 			$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").removeClass("zoomIn");
 		})
-		$.ajax({
-	        url:"/uinfo/updateClientInfo",
-	        type:"GET",
-	        datatype:"json",
-	        contentType:"application/json; charset=utf-8",
-	        beforeSend:function(){
-	        	openLoadingHandle();
-	        },
-	        success:function(data){
-	        		if(data["error"] == 1){
-			        	$("#panel .mainContent .rightHandleModule .didMoneyHandleShow").html('<table cellpadding="0" cellspacing="0" border="0" class="cell-border" id="didMoneyHandleShowTable"></table>');
-		        		$("#didMoneyHandleShowTable").dataTable({
-		       			"initComplete": function () {
-					            var api = this.api();
-					            $("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table tbody").on("click",'tr td:not(".select-checkbox")',function(event){
-					            	event.stopPropagation();
-					            	var clickFunction = $(this).text();
-					            	api.search(clickFunction).draw();
-					            })
-					        },
-		        			    language:languageData,
-		        			    scrollY:$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").height() - 220,
-						        scrollX:true,
-						        "data": data["data"]["financeData"],
-								 "scrollCollapse": "true",
-	 							// "paging": false,
-	 							// "searching":false,
-	 							"autoWidth":false,
-						        "columns": tempDataArr,
-						        "processing":true,
 
-						        "columnDefs": [{
-						            orderable: false,
-						            className: 'select-checkbox',
-						            defaultContent:"",
-						            targets:   0
-						        }],
-						        select: {
-						            style:    'os',
-						            selector: 'td:first-child'
+		if($("#panel .mainContent .rightHandleModule .didMoneyHandleShow").children("#didMoneyHandleShowTable_wrapper").length > 0 && !financialClickChange){
+			$("#didMoneyHandleShowTable").dataTable().api().search("").draw();
+			changeDidFinacialTable(element,$("#didMoneyHandleShowTable").dataTable().api());
+			
+		}else{
+			$.ajax({
+		        url:"/uinfo/updateClientInfo",
+		        type:"GET",
+		        datatype:"json",
+		        contentType:"application/json; charset=utf-8",
+		        beforeSend:function(){
+		        	openLoadingHandle();
+		        },
+		        success:function(data){
+		        		if(data["error"] == 1){
+		        			var tempHandleThisApi;
+				        	$("#panel .mainContent .rightHandleModule .didMoneyHandleShow").html('<table cellpadding="0" cellspacing="0" border="0" class="cell-border" id="didMoneyHandleShowTable"></table>');
+			        		$("#didMoneyHandleShowTable").dataTable({
+			       			"initComplete": function () {
+						            var api = this.api();
+						            tempHandleThisApi = api;
+						            $("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table tbody").on("click",'tr td:not(".select-checkbox")',function(event){
+						            	event.stopPropagation();
+						            	var clickFunction = $(this).text();
+						            	api.search(clickFunction).draw();
+						            })
 						        },
-						        order: [[ 1, 'asc' ]]
+			        			    language:languageData,
+			        			    scrollY:$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").height() - 220,
+							        scrollX:true,
+							        "data": data["data"]["financeData"],
+									 "scrollCollapse": "true",
+		 							// "paging": false,
+		 							// "searching":false,
+		 							"autoWidth":false,
+							        "columns": tempDataArr,
+							        "processing":true,
 
-					    });
-	        			$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap").css("zIndex","201");
-	        			$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table.dataTable tbody tr").removeClass("selected");
-	        			$("#panel .mainContent .rightHandleModule .didMoneyHandleShow-wrap table.dataTable tbody tr").eq(Number($(element).text())-1).children("td").eq(0).trigger("click");
-	        			$(".markLine .didMoneyHandleBtn").show();
-	        			if(didMoneyBool){
-	        				didMoneyBtnFunction(element);
-	        			}
-		        		}
-		        		spinner.stop();
+							        "columnDefs": [{
+							            orderable: false,
+							            className: 'select-checkbox',
+							            defaultContent:"",
+							            targets:   0
+							        }],
+							        select: {
+							            style:    'os',
+							            selector: 'td:first-child'
+							        },
+							        order: [[ 1, 'asc' ]]
 
-	           },
-	           error:function(){
-	           		closeLodingHandle();
-	           }
-	      });		
+						    });
+
+			        		changeDidFinacialTable(element,tempHandleThisApi);
+		        			didMoneyBtnFunction();
+
+			        		}
+			        		spinner.stop();
+
+		           },
+		           error:function(){
+		           		closeLodingHandle();
+		           }
+		      });			
+		}
+
+	
 	}
 
 
@@ -672,8 +709,6 @@
 			event.stopPropagation();
 			createTableFinance($(this));
 		})
-
-
 
 
 		$(".didRecordGoodList tbody").on("dblclick",'tr td:not(.noEdit)',function(event){
@@ -767,28 +802,6 @@
 			// ------end
 		})
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -901,9 +914,13 @@
 		     					setTimeout(function(){
 		     						$("#panel .mainContent .rightHandleModule .addfinancialHandle .addfinancialHandleWaring").hide();
 		     					},2000)
+
+		     					//判断是否修改了财产记录表
+		     					financialClickChange = true;
 	     				}else if($("#panel .mainContent .leftNavModule .handleList .active").hasClass("financialTable")){
 	     						 var table = $('#financialTableShowTable').DataTable();
-	     						 table.rows(".selected").remove().draw(false);
+	     						 table.rows(".selected").remove().draw(false); 
+		     					financialClickChange = true;	     						 
 	     				}else{
 	     						 var table = $('#didRecordGoodListTable').DataTable();
 	     						  table.rows(".selected").remove().draw(false);
